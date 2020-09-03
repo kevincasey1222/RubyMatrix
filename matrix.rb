@@ -20,16 +20,16 @@ class Matrix
 
     # build the columns from the rows
     @columns = Array.new(@rows[0].count) # assume every row has the same number of elements. That's how many columns.
-    j = 0 # count columns
+    col = 0 # count columns
     @columns.each { |c| 
       c = Array.new(@rows.count) # give each column an array with length equal to the number of rows
-      i = 0 # count rows to put elements in the column array
+      row = 0 # count rows to put elements in the column array
       @rows.each { |r| 
-        c[i] = r[j]
-        i = i + 1
+        c[row] = r[col]
+        row = row + 1
       }
-      @columns[j] = c
-      j = j + 1
+      @columns[col] = c
+      col = col + 1
     }
   end
 
