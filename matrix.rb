@@ -12,18 +12,15 @@ class Matrix
   attr_reader :columns
 
   def initialize(input)
-    temp_rows = input.split(%r{\n}) # each temp_row is now a string of space delimited numbers
-    @rows = temp_rows.map { |row|
-      row.split.map! { |num| num.to_i }
-    }
+    @rows = input.each_line.map do |row|
+      row.split.map &:to_i
+    end
 
     # build the columns from the rows
     @columns = Array.new(@rows[0].count).map { |c| c = Array.new(@rows.count) } # assume every row has the same number of elements
-    @columns.map.with_index { |c, i| 
-      @rows.each_with_index { |r, j| 
-        c[j] = r[i]
-      }
-    }
+    @columns.map.with_index do |c, i| 
+      @rows.each_with_index { |r, j| c[j] = r[i] }
+    end
   end
 
 end
