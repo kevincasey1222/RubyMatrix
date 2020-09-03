@@ -17,7 +17,7 @@ class Matrix
     end
 
     # build the columns from the rows
-    @columns = Array.new(@rows[0].count).map { |c| c = Array.new(@rows.count) } # assume every row has the same number of elements
+    @columns = 1.upto(@rows[0].count).map { Array.new(@rows.count) } # assume every row has the same number of elements
     @columns.map.with_index do |c, i| 
       @rows.each_with_index { |r, j| c[j] = r[i] }
     end
