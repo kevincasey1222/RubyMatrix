@@ -14,11 +14,8 @@ class Matrix
   def initialize(input)
     temp_rows = input.split(%r{\n}) # each temp_row is now a string of space delimited numbers
     i = 0 # count rows
-    @rows = Array.new(temp_rows.count)
-    temp_rows.each { |r| 
-      @rows[i] = r.split # @row is now an array of strings
-      @rows[i].map! { |num| num.to_i } # now it's an array of integers
-      i = i + 1
+    @rows = temp_rows.map { |row|
+      row.split.map! { |num| num.to_i }
     }
 
     # build the columns from the rows
